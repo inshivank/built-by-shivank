@@ -1,0 +1,2 @@
+# Optional: drop GeneralSans-Variable.woff2 here to self-host the display font.
+# Until then, the stack falls back to Inter when General Sans is not installed locally.
