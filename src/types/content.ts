@@ -1,0 +1,145 @@
+
+export interface SiteConfig {
+  title: string;
+  developerName: string;
+  designerCredits: string;
+  canonicalUrl: string;
+}
+
+export interface HeroBadge {
+  icon: string; // Dynamic lookup identifier or inline custom SVG
+  text: string;
+}
+
+export interface HeroContent {
+  eyebrow: string;
+  mainHeading: string;
+  description: string;
+  badges: HeroBadge[];
+  primaryButton: {
+    text: string;
+  };
+  secondaryButton: {
+    text: string;
+    filename: string;
+  };
+}
+
+export interface NavItem {
+  name: string;
+  href: string;
+}
+
+export interface NavigationContent {
+  brand: string;
+  items: NavItem[];
+}
+
+export interface SocialLinks {
+  github: string;
+  linkedin: string;
+  leetcode: string;
+}
+
+export interface Project {
+  title: string;
+  slug: string;
+  description: string;
+  shortDescription: string;
+  heroDescription: string;
+  problem: string;
+  solution: string;
+  features: string[];
+  techStack: string[];
+  architecture: string;
+  challenges: string[];
+  lessonsLearned: string[];
+  futureImprovements: string[];
+  github: string;
+  liveDemo?: string;
+  caseStudy: string;
+  coverImage: string;
+  demoVideo?: string;
+  gallery: string[];
+  duration: string;
+  status: string;
+}
+
+export interface Experience {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  type: string;
+  description: string[];
+}
+
+export interface EducationCourse {
+  name: string;
+  code?: string;
+}
+
+export interface Education {
+  institution: string;
+  degree: string;
+  location: string;
+  period: string;
+  currentProgress: {
+    year: string;
+    percentage: number;
+  };
+  coursework: string[];
+}
+
+export interface Leadership {
+  role: string;
+  organization: string;
+  period: string;
+  description: string[];
+}
+
+export interface Certification {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialUrl: string;
+  logoUrl?: string; // fallback if needed
+}
+
+export interface Achievement {
+  title: string;
+  metric: string;
+  description: string;
+}
+
+export interface SkillCategory {
+  category: string;
+  skills: string[];
+}
+
+export interface ContactContent {
+  tagline: string;
+  description: string;
+  email: string;
+  socials: SocialLinks;
+}
+
+export interface AboutValue {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+export interface AboutMilestone {
+  year: string;
+  title: string;
+  desc: string;
+}
+
+export interface AboutContent {
+  title: string;
+  subtitle: string;
+  story: string[];
+  values: AboutValue[];
+  milestones: AboutMilestone[];
+}

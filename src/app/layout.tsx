@@ -1,6 +1,7 @@
 import { AppProviders } from "@/components/providers/app-providers";
 import { ThemeScript } from "@/components/providers/theme-script";
 import { SkipLink } from "@/components/a11y/skip-link";
+import { Navigation } from "@/components/layout/navigation";
 import { metadata, viewport } from "@/config/metadata";
 import { fonts } from "@/lib/fonts";
 import "./globals.css";
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className="min-h-full">
         <AppProviders>
           <SkipLink />
+          <Navigation />
           {children}
         </AppProviders>
       </body>
