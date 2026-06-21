@@ -81,4 +81,4 @@ Design tokens are defined in `src/app/globals.css` using Tailwind v4 `@theme inl
 
 ## License
 
-Private project.
+Public project.
