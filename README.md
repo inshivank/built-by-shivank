@@ -67,7 +67,7 @@ src/
 
 ## shadcn/ui
 
-Add components as needed:
+Add more components as needed:
 
 ```bash
 npx shadcn@latest add button
