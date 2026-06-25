@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Code,
   ExternalLink,
-  Play,
   Layout,
   Hammer,
   BookOpen,
@@ -18,15 +16,13 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { PageShell } from "@/components/layout/page-shell";
 import { Footer } from "@/components/layout/footer";
-import { ProjectPreview } from "@/components/work/project-previews";
+import { ProjectMedia } from "@/components/work/project-media";
 
 interface ProjectDetailsClientProps {
   project: Project;
 }
 
 export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
-
   return (
     <PageShell className="pt-24 md:pt-32 select-none">
       <Section spacing="default" className="pb-12">
@@ -82,35 +78,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
             </div>
 
             {/* Visual Cover Screen */}
-            <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border bg-[#060608] flex items-center justify-center shadow-xl">
-              {isPlayingVideo && project.demoVideo ? (
-                <video
-                  src={project.demoVideo}
-                  className="absolute inset-0 w-full h-full object-cover z-20 bg-black"
-                  autoPlay
-                  controls
-                  loop
-                  playsInline
-                />
-              ) : (
-                <>
-                  <div className="absolute inset-0 opacity-85">
-                    <ProjectPreview slug={project.slug} />
-                  </div>
-                  <button
-                    onClick={() => setIsPlayingVideo(true)}
-                    className="absolute z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary/95 text-primary-foreground shadow-lg hover:scale-105 hover:bg-primary transition-transform cursor-pointer border-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                    aria-label="Play demo video"
-                    type="button"
-                  >
-                    <Play className="h-7 w-7 fill-current ml-0.5" />
-                  </button>
-                  <div className="absolute bottom-4 left-4 z-10 text-xs font-mono text-muted-foreground bg-black/60 px-3 py-1.5 rounded-md border border-white/5 backdrop-blur-sm">
-                    Interactive Mockup Simulation
-                  </div>
-                </>
-              )}
-            </div>
+            <ProjectMedia project={project} className="rounded-2xl" />
 
             {/* Detail Layout Grid */}
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 pt-6">
@@ -148,6 +116,33 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Screenshots Gallery */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2.5 text-foreground">
+                    <Layout className="h-5 w-5 text-brand" />
+                    <h2 className="text-lg font-bold uppercase tracking-wider font-heading">
+                      Screenshots
+                    </h2>
+                  </div>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    {project.gallery.length ? (
+                      project.gallery.map((imageUrl, idx) => (
+                        <div key={imageUrl} className="aspect-video overflow-hidden rounded-2xl border border-border/60 bg-secondary/10">
+                          <img
+                            src={imageUrl}
+                            alt={`${project.title} screenshot ${idx + 1}`}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="aspect-video rounded-2xl border border-border/60 bg-secondary/20 flex items-center justify-center text-sm text-muted-foreground">
+                        No screenshots available.
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Technical Challenges */}

@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Code, ExternalLink, Play, Layout, Hammer, BookOpen, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Code, ExternalLink, Layout, Hammer, BookOpen, AlertTriangle } from "lucide-react";
 import { Project } from "@/types/content";
-import { ProjectPreview } from "./project-previews";
-
+import { ProjectMedia } from "./project-media";
 
 interface ProjectOverlayProps {
   project: Project;
@@ -16,8 +15,6 @@ interface ProjectOverlayProps {
 export function ProjectOverlay({ project, onClose }: ProjectOverlayProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const backButtonRef = useRef<HTMLButtonElement>(null);
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   // Manage body scroll lock
   useEffect(() => {
@@ -121,46 +118,7 @@ export function ProjectOverlay({ project, onClose }: ProjectOverlayProps) {
         <div className="flex-1 overflow-y-auto p-6 sm:p-10 md:p-12 space-y-12">
           
           {/* Cover Demo video/visual placeholder */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/80 bg-[#060608] flex items-center justify-center">
-            {isPlayingVideo && project.demoVideo ? (
-              <video
-                src={project.demoVideo}
-                className="absolute inset-0 w-full h-full object-cover z-20 bg-black"
-                autoPlay
-                controls
-                loop
-                playsInline
-              />
-            ) : (
-              <>
-                {/* Project graphic */}
-                <div className="absolute inset-0 opacity-70">
-                  {!imageError && project.coverImage ? (
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      className="h-full w-full object-cover"
-                      onError={() => setImageError(true)}
-                    />
-                  ) : (
-                    <ProjectPreview slug={project.slug} />
-                  )}
-                </div>
-                {/* Play Button Indicator */}
-                <button
-                  onClick={() => setIsPlayingVideo(true)}
-                  className="absolute z-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary/95 text-primary-foreground shadow-lg hover:scale-105 hover:bg-primary transition-transform cursor-pointer border-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                  aria-label="Play demo video"
-                  type="button"
-                >
-                  <Play className="h-6 w-6 fill-current ml-0.5" />
-                </button>
-                <div className="absolute bottom-4 left-4 z-10 text-[10px] font-mono text-muted-foreground bg-black/60 px-2.5 py-1 rounded-md border border-white/5 backdrop-blur-sm">
-                  Interactive Demo Simulation
-                </div>
-              </>
-            )}
-          </div>
+          <ProjectMedia project={project} className="rounded-xl" />
 
           {/* Details Split Layout */}
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
