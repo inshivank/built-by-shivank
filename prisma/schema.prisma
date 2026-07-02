@@ -1,0 +1,262 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ─────────────────────────────────────────────
+// Auth
+// ─────────────────────────────────────────────
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Site / Hero
+// ─────────────────────────────────────────────
+
+model SiteSettings {
+  id            String @id @default("singleton")
+  developerName String @default("Shivank Choudhary")
+  siteTitle     String @default("Built by Shivank")
+  canonicalUrl  String @default("https://builtbyshivank.com")
+}
+
+model Hero {
+  id              String   @id @default("singleton")
+  eyebrow         String
+  mainHeading     String
+  description     String
+  primaryBtnText  String   @default("View Projects")
+  secondaryBtnText String  @default("Download Resume")
+  updatedAt       DateTime @updatedAt
+
+  badges HeroBadge[]
+}
+
+model HeroBadge {
+  id     String @id @default(cuid())
+  icon   String
+  text   String
+  order  Int    @default(0)
+  heroId String @default("singleton")
+  hero   Hero   @relation(fields: [heroId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// About
+// ─────────────────────────────────────────────
+
+model About {
+  id         String @id @default("singleton")
+  title      String @default("About Me")
+  subtitle   String
+  story      String // JSON array of paragraphs stored as JSON string
+  updatedAt  DateTime @updatedAt
+
+  values     AboutValue[]
+  milestones AboutMilestone[]
+}
+
+model AboutValue {
+  id      String @id @default(cuid())
+  icon    String
+  title   String
+  desc    String
+  order   Int    @default(0)
+  aboutId String @default("singleton")
+  about   About  @relation(fields: [aboutId], references: [id], onDelete: Cascade)
+}
+
+model AboutMilestone {
+  id      String @id @default(cuid())
+  year    String
+  title   String
+  desc    String
+  order   Int    @default(0)
+  aboutId String @default("singleton")
+  about   About  @relation(fields: [aboutId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// Skills
+// ─────────────────────────────────────────────
+
+model SkillCategory {
+  id     String  @id @default(cuid())
+  name   String
+  order  Int     @default(0)
+  skills Skill[]
+}
+
+model Skill {
+  id          String        @id @default(cuid())
+  name        String
+  icon        String?
+  proficiency Int           @default(80) // 0-100
+  order       Int           @default(0)
+  categoryId  String
+  category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// Experience
+// ─────────────────────────────────────────────
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  location    String
+  period      String
+  type        String
+  description String   // JSON array of bullet strings
+  isCurrent   Boolean  @default(false)
+  logoUrl     String?
+  startDate   DateTime?
+  endDate     DateTime?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Education
+// ─────────────────────────────────────────────
+
+model Education {
+  id              String   @id @default("singleton")
+  institution     String
+  degree          String
+  location        String
+  period          String
+  progressYear    String
+  progressPct     Int      @default(0)
+  gpa             String?
+  coursework      String   // JSON array
+  updatedAt       DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Leadership
+// ─────────────────────────────────────────────
+
+model Leadership {
+  id           String   @id @default(cuid())
+  role         String
+  organization String
+  period       String
+  description  String   // JSON array
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Certifications
+// ─────────────────────────────────────────────
+
+model Certification {
+  id             String   @id @default(cuid())
+  title          String
+  issuer         String
+  date           String
+  credentialUrl  String
+  logoUrl        String?
+  imageUrl       String?
+  order          Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Achievements
+// ─────────────────────────────────────────────
+
+model Achievement {
+  id          String   @id @default(cuid())
+  title       String
+  metric      String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Projects
+// ─────────────────────────────────────────────
+
+model Project {
+  id                 String    @id @default(cuid())
+  title              String
+  slug               String    @unique
+  description        String
+  shortDescription   String
+  heroDescription    String?
+  problem            String?
+  solution           String?
+  features           String    // JSON array
+  techStack          String    // JSON array
+  architecture       String?
+  challenges         String?   // JSON array
+  lessonsLearned     String?   // JSON array
+  futureImprovements String?   // JSON array
+  github             String?
+  liveDemo           String?
+  caseStudy          String?
+  coverImage         String?
+  demoVideo          String?
+  gallery            String    @default("[]") // JSON array of paths
+  duration           String?
+  tags               String    @default("[]") // JSON array
+  status             String    @default("Draft") // Draft | Ongoing | Completed | Archived
+  featured           Boolean   @default(false)
+  published          Boolean   @default(true)
+  order              Int       @default(0)
+  startDate          DateTime?
+  endDate            DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Contact & Socials
+// ─────────────────────────────────────────────
+
+model ContactSettings {
+  id          String   @id @default("singleton")
+  tagline     String
+  description String
+  email       String
+  github      String?
+  linkedin    String?
+  twitter     String?
+  leetcode    String?
+  codeforces  String?
+  phone       String?
+  resumeUrl   String?
+  resumeFilename String?
+  updatedAt   DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// Contact Form Messages (Inbox)
+// ─────────────────────────────────────────────
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
