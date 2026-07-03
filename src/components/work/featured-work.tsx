@@ -1,16 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { ProjectCard } from "./project-card";
 import { ProjectOverlay } from "./project-overlay";
-import { featuredProjects } from "@/content/projects";
 import { Project } from "@/types/content";
+import { getProjects } from "@/actions/projects";
 
 export function FeaturedWork() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const fetched = await getProjects();
+        setProjects(fetched);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <Section id="work" className="border-t border-border/20 pt-28 md:pt-36">
+        <Container size="wide" className="space-y-16 md:space-y-24">
+          <div className="space-y-4 max-w-[700px]">
+            <h2 className="font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Selected Work
+            </h2>
+            <p className="font-sans text-sm sm:text-base leading-relaxed text-muted-foreground">
+              Loading projects...
+            </p>
+          </div>
+        </Container>
+      </Section>
+    );
+  }
 
   return (
     <Section id="work" className="border-t border-border/20 pt-28 md:pt-36">
@@ -39,7 +72,7 @@ export function FeaturedWork() {
           }}
           className="space-y-16 md:space-y-24"
         >
-          {featuredProjects.map((project) => (
+          {projects.map((project) => (
             <motion.div
               key={project.slug}
               variants={{

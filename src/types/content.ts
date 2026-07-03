@@ -42,52 +42,33 @@ export interface SocialLinks {
 }
 
 export interface Project {
+  id: string;
   title: string;
   slug: string;
   description: string;
   shortDescription: string;
-  heroDescription: string;
-  problem: string;
-  solution: string;
+  heroDescription?: string;
+  problem?: string;
+  solution?: string;
   features: string[];
   techStack: string[];
-  architecture: string;
+  architecture?: string;
   challenges: string[];
   lessonsLearned: string[];
   futureImprovements: string[];
-  github: string;
+  github?: string;
   liveDemo?: string;
-  caseStudy: string;
-  coverImage: string;
+  caseStudy?: string;
+  coverImage?: string;
   demoVideo?: string;
   gallery: string[];
-  duration: string;
+  duration?: string;
   status: string;
+  featured: boolean;
+  published: boolean;
+  order: number;
+  tags?: string[];
 }
-
-export interface Experience {
-  role: string;
-  company: string;
-  location: string;
-  period: string;
-  type: string;
-  description: string[];
-}
-
-export interface EducationCourse {
-  name: string;
-  code?: string;
-}
-
-export interface Education {
-  institution: string;
-  degree: string;
-  location: string;
-  period: string;
-  currentProgress: {
-    year: string;
-    percentage: number;
-  };
   coursework: string[];
 }
 

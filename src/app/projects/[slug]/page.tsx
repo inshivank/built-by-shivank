@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { featuredProjects } from "@/content/projects";
+import { getProjectBySlug } from "@/actions/projects";
 import { ProjectDetailsClient } from "./project-details-client";
 import { Metadata } from "next";
 
@@ -10,15 +10,14 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return featuredProjects.map((project) => ({
-    slug: project.slug,
-  }));
+  // Return empty - dynamic rendering for database-driven content
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = featuredProjects.find((p) => p.slug === slug);
-  
+  const project = await getProjectBySlug(slug);
+
   if (!project) return {};
 
   return {
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
-  const project = featuredProjects.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
