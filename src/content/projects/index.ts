@@ -1,4 +1,4 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 import { marketplaceProject } from "./marketplace";
 import { cyberThreatProject } from "./cyber-threat";
 import { hateSpeechProject } from "./hate-speech";
@@ -15,3 +15,4 @@ export const featuredProjects: Project[] = [
   portfolioProject,
 ];
 export { marketplaceProject, cyberThreatProject, hateSpeechProject, weatherProject, imageEditorProject, portfolioProject };
+

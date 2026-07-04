@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const cyberThreatProject: Project = {
+export const cyberThreatProject: Partial<Project> = {
   title: "Adaptive Cyber Threat Detection",
   slug: "adaptive-cyber-threat-detection",
   description: "An intelligent network security monitor that ingests and parses system access logs to detect and isolate unauthorized intrusion anomalies using customized classification models.",
@@ -65,3 +65,4 @@ export const cyberThreatProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

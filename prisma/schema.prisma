@@ -1,10 +1,10 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
 }
 
 // ─────────────────────────────────────────────
@@ -124,6 +124,7 @@ model Experience {
   startDate   DateTime?
   endDate     DateTime?
   order       Int      @default(0)
+  published   Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

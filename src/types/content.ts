@@ -69,7 +69,20 @@ export interface Project {
   order: number;
   tags?: string[];
 }
-  coursework: string[];
+
+/** Database-driven experience entry (used by admin and public portfolio) */
+export interface ExperienceEntry {
+  id: string;
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  type: string;
+  description: string[]; // parsed from JSON stored in DB
+  isCurrent: boolean;
+  logoUrl?: string;
+  order: number;
+  published: boolean;
 }
 
 export interface Leadership {
@@ -123,4 +136,26 @@ export interface AboutContent {
   story: string[];
   values: AboutValue[];
   milestones: AboutMilestone[];
+}
+
+/** Legacy static-content interface (kept for backward compat with content files) */
+export interface Experience {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  type: string;
+  description: string[];
+}
+
+export interface Education {
+  institution: string;
+  degree: string;
+  location: string;
+  period: string;
+  currentProgress: {
+    year: string;
+    percentage: number;
+  };
+  coursework: string[];
 }

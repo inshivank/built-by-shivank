@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const imageEditorProject: Project = {
+export const imageEditorProject: Partial<Project> = {
   title: "Image Editor",
   slug: "image-editor",
   description: "An interactive browser image editor hosting adjustment sliders for brightness, saturation, and crop ratios.",
@@ -65,3 +65,4 @@ export const imageEditorProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

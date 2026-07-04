@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const portfolioProject: Project = {
+export const portfolioProject: Partial<Project> = {
   title: "Portfolio Website",
   slug: "portfolio-website",
   description: "My personal developer portfolio website, engineered to represent a premium product showcase rather than a simple resume template.",
@@ -65,3 +65,4 @@ export const portfolioProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

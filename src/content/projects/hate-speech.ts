@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const hateSpeechProject: Project = {
+export const hateSpeechProject: Partial<Project> = {
   title: "Hate Speech Detection",
   slug: "hate-speech-detection",
   description: "An AI moderation system leveraging natural language processing models to classify, highlight, and annotate toxic text messages across messaging platforms.",
@@ -65,3 +65,4 @@ export const hateSpeechProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

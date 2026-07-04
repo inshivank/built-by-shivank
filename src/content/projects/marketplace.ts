@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const marketplaceProject: Project = {
+export const marketplaceProject: Partial<Project> = {
   title: "College Marketplace with Recommendation System",
   slug: "college-marketplace",
   description: "A high-performance peer-to-peer commerce platform designed for university students to safely list, negotiate, and trade campus products in real-time, backed by a collaborative recommendation system.",
@@ -65,3 +65,4 @@ export const marketplaceProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

@@ -1,6 +1,6 @@
-import { Project } from "@/types/content";
+﻿import { Project } from "@/types/content";
 
-export const weatherProject: Project = {
+export const weatherProject: Partial<Project> = {
   title: "Weather Application",
   slug: "weather-application",
   description: "A minimalist weather application presenting real-time reports, wind data, precipitation forecasts, and hourly temperature charts.",
@@ -65,3 +65,4 @@ export const weatherProject: Project = {
   // TODO: Replace with actual project development status
   status: "Replace with project status.",
 };
+

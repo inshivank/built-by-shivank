@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import {
@@ -13,25 +13,29 @@ import {
 } from "lucide-react";
 import { StatCard } from "@/components/admin/stat-card";
 import { getAllProjectsAdmin } from "@/actions/projects";
-import { experiences } from "@/content/experience";
+import { getAllExperiencesAdmin } from "@/actions/experience";
 import { skills } from "@/content/skills";
 import { certifications } from "@/content/certifications";
+import { Project } from "@/types/content";
 
 export default function DashboardHomePage() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [experienceCount, setExperienceCount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllProjectsAdmin()
-      .then(setProjects)
+    Promise.all([getAllProjectsAdmin(), getAllExperiencesAdmin()])
+      .then(([projs, exps]) => {
+        setProjects(projs);
+        setExperienceCount(exps.length);
+      })
       .finally(() => setLoading(false));
   }, []);
 
   const totalProjects = projects.length;
-  const featuredCount = projects.filter((p: any) => p.featured).length;
-  const completedCount = projects.filter((p: any) => p.status === "Completed").length;
-  const ongoingCount = projects.filter((p: any) => p.status === "Ongoing").length;
-  const totalExperience = experiences.length;
+  const featuredCount = projects.filter((p) => p.featured).length;
+  const completedCount = projects.filter((p) => p.status === "Completed").length;
+  const ongoingCount = projects.filter((p) => p.status === "Ongoing").length;
   const totalSkills = skills.reduce((acc, cat) => acc + cat.skills.length, 0);
 
   const STATS = [
@@ -72,7 +76,7 @@ export default function DashboardHomePage() {
     },
     {
       title: "Experience Entries",
-      value: totalExperience,
+      value: loading ? "-" : experienceCount,
       icon: Briefcase,
       trend: "Work experience records",
       accentColor: "#06B6D4",
@@ -158,90 +162,11 @@ export default function DashboardHomePage() {
               marginBottom: "4px",
             }}
           >
-            Phase 3 Active — Project Management
+            Phase 3 Active — Content Module CRUD
           </div>
           <div style={{ fontSize: "13px", color: "#A1A1AA", lineHeight: 1.6 }}>
-            Projects are now managed via the database. Stats above are live from the
-            database. Add, edit, and delete projects from the Projects page.
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function DashboardHomePage() {
-  return (
-    <div>
-      {/* Header */}
-      <div style={{ marginBottom: "28px" }}>
-        <h2
-          style={{
-            fontSize: "22px",
-            fontWeight: 700,
-            color: "#FAFAFA",
-            margin: "0 0 6px",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Overview
-        </h2>
-        <p style={{ fontSize: "14px", color: "#A1A1AA", margin: 0 }}>
-          Your portfolio at a glance. Manage content using the sidebar.
-        </p>
-      </div>
-
-      {/* Stats grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gap: "16px",
-          marginBottom: "36px",
-        }}
-      >
-        {STATS.map((stat) => (
-          <StatCard key={stat.title} {...stat} />
-        ))}
-      </div>
-
-      {/* Info banner */}
-      <div
-        style={{
-          background: "rgba(59,130,246,0.08)",
-          border: "1px solid rgba(59,130,246,0.15)",
-          borderRadius: "12px",
-          padding: "20px 24px",
-          display: "flex",
-          alignItems: "flex-start",
-          gap: "14px",
-        }}
-      >
-        <div
-          style={{
-            width: "8px",
-            height: "8px",
-            borderRadius: "50%",
-            background: "#3B82F6",
-            flexShrink: 0,
-            marginTop: "6px",
-          }}
-        />
-        <div>
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: 600,
-              color: "#FAFAFA",
-              marginBottom: "4px",
-            }}
-          >
-            Phase 2 Complete — Authentication &amp; Dashboard Framework
-          </div>
-          <div style={{ fontSize: "13px", color: "#A1A1AA", lineHeight: 1.6 }}>
-            Content management (CRUD) will be unlocked in Phase 3. Stats above
-            are derived from the current static content files and will sync to
-            the database automatically once migration is complete.
+            Projects and Experience are now managed via the database. Stats
+            above are live. Add, edit, and delete entries from the sidebar pages.
           </div>
         </div>
       </div>
