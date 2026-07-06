@@ -4,6 +4,10 @@ import { prisma } from "@/lib/db";
 import { ExperienceEntry } from "@/types/content";
 import { revalidatePath } from "next/cache";
 
+// Re-export types so callers can import them from this module
+export type { ExperienceEntry } from "@/types/content";
+
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function parseDescription(raw: string): string[] {
