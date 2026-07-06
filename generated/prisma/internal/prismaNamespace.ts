@@ -1797,7 +1797,8 @@ export type AboutMilestoneScalarFieldEnum = (typeof AboutMilestoneScalarFieldEnu
 export const SkillCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  order: 'order'
+  order: 'order',
+  published: 'published'
 } as const
 
 export type SkillCategoryScalarFieldEnum = (typeof SkillCategoryScalarFieldEnum)[keyof typeof SkillCategoryScalarFieldEnum]
@@ -1808,6 +1809,9 @@ export const SkillScalarFieldEnum = {
   name: 'name',
   icon: 'icon',
   proficiency: 'proficiency',
+  yearsExp: 'yearsExp',
+  featured: 'featured',
+  published: 'published',
   order: 'order',
   categoryId: 'categoryId'
 } as const

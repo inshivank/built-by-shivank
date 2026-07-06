@@ -91,10 +91,11 @@ model AboutMilestone {
 // ─────────────────────────────────────────────
 
 model SkillCategory {
-  id     String  @id @default(cuid())
-  name   String
-  order  Int     @default(0)
-  skills Skill[]
+  id        String  @id @default(cuid())
+  name      String
+  order     Int     @default(0)
+  published Boolean @default(true)
+  skills    Skill[]
 }
 
 model Skill {
@@ -102,6 +103,9 @@ model Skill {
   name        String
   icon        String?
   proficiency Int           @default(80) // 0-100
+  yearsExp    Float?        // optional years of experience
+  featured    Boolean       @default(false)
+  published   Boolean       @default(true)
   order       Int           @default(0)
   categoryId  String
   category    SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)

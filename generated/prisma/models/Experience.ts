@@ -569,10 +569,6 @@ export type ExperienceSumOrderByAggregateInput = {
   order?: Prisma.SortOrder
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }

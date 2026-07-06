@@ -38,18 +38,21 @@ export type SkillCategoryMinAggregateOutputType = {
   id: string | null
   name: string | null
   order: number | null
+  published: boolean | null
 }
 
 export type SkillCategoryMaxAggregateOutputType = {
   id: string | null
   name: string | null
   order: number | null
+  published: boolean | null
 }
 
 export type SkillCategoryCountAggregateOutputType = {
   id: number
   name: number
   order: number
+  published: number
   _all: number
 }
 
@@ -66,18 +69,21 @@ export type SkillCategoryMinAggregateInputType = {
   id?: true
   name?: true
   order?: true
+  published?: true
 }
 
 export type SkillCategoryMaxAggregateInputType = {
   id?: true
   name?: true
   order?: true
+  published?: true
 }
 
 export type SkillCategoryCountAggregateInputType = {
   id?: true
   name?: true
   order?: true
+  published?: true
   _all?: true
 }
 
@@ -171,6 +177,7 @@ export type SkillCategoryGroupByOutputType = {
   id: string
   name: string
   order: number
+  published: boolean
   _count: SkillCategoryCountAggregateOutputType | null
   _avg: SkillCategoryAvgAggregateOutputType | null
   _sum: SkillCategorySumAggregateOutputType | null
@@ -200,6 +207,7 @@ export type SkillCategoryWhereInput = {
   id?: Prisma.StringFilter<"SkillCategory"> | string
   name?: Prisma.StringFilter<"SkillCategory"> | string
   order?: Prisma.IntFilter<"SkillCategory"> | number
+  published?: Prisma.BoolFilter<"SkillCategory"> | boolean
   skills?: Prisma.SkillListRelationFilter
 }
 
@@ -207,6 +215,7 @@ export type SkillCategoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   skills?: Prisma.SkillOrderByRelationAggregateInput
 }
 
@@ -217,6 +226,7 @@ export type SkillCategoryWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.SkillCategoryWhereInput | Prisma.SkillCategoryWhereInput[]
   name?: Prisma.StringFilter<"SkillCategory"> | string
   order?: Prisma.IntFilter<"SkillCategory"> | number
+  published?: Prisma.BoolFilter<"SkillCategory"> | boolean
   skills?: Prisma.SkillListRelationFilter
 }, "id">
 
@@ -224,6 +234,7 @@ export type SkillCategoryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   _count?: Prisma.SkillCategoryCountOrderByAggregateInput
   _avg?: Prisma.SkillCategoryAvgOrderByAggregateInput
   _max?: Prisma.SkillCategoryMaxOrderByAggregateInput
@@ -238,12 +249,14 @@ export type SkillCategoryScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"SkillCategory"> | string
   name?: Prisma.StringWithAggregatesFilter<"SkillCategory"> | string
   order?: Prisma.IntWithAggregatesFilter<"SkillCategory"> | number
+  published?: Prisma.BoolWithAggregatesFilter<"SkillCategory"> | boolean
 }
 
 export type SkillCategoryCreateInput = {
   id?: string
   name: string
   order?: number
+  published?: boolean
   skills?: Prisma.SkillCreateNestedManyWithoutCategoryInput
 }
 
@@ -251,6 +264,7 @@ export type SkillCategoryUncheckedCreateInput = {
   id?: string
   name: string
   order?: number
+  published?: boolean
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutCategoryInput
 }
 
@@ -258,6 +272,7 @@ export type SkillCategoryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   skills?: Prisma.SkillUpdateManyWithoutCategoryNestedInput
 }
 
@@ -265,6 +280,7 @@ export type SkillCategoryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   skills?: Prisma.SkillUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
@@ -272,24 +288,28 @@ export type SkillCategoryCreateManyInput = {
   id?: string
   name: string
   order?: number
+  published?: boolean
 }
 
 export type SkillCategoryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type SkillCategoryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type SkillCategoryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
 }
 
 export type SkillCategoryAvgOrderByAggregateInput = {
@@ -300,12 +320,14 @@ export type SkillCategoryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
 }
 
 export type SkillCategoryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
 }
 
 export type SkillCategorySumOrderByAggregateInput = {
@@ -315,6 +337,10 @@ export type SkillCategorySumOrderByAggregateInput = {
 export type SkillCategoryScalarRelationFilter = {
   is?: Prisma.SkillCategoryWhereInput
   isNot?: Prisma.SkillCategoryWhereInput
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type SkillCategoryCreateNestedOneWithoutSkillsInput = {
@@ -335,12 +361,14 @@ export type SkillCategoryCreateWithoutSkillsInput = {
   id?: string
   name: string
   order?: number
+  published?: boolean
 }
 
 export type SkillCategoryUncheckedCreateWithoutSkillsInput = {
   id?: string
   name: string
   order?: number
+  published?: boolean
 }
 
 export type SkillCategoryCreateOrConnectWithoutSkillsInput = {
@@ -363,12 +391,14 @@ export type SkillCategoryUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type SkillCategoryUncheckedUpdateWithoutSkillsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -406,6 +436,7 @@ export type SkillCategorySelect<ExtArgs extends runtime.Types.Extensions.Interna
   id?: boolean
   name?: boolean
   order?: boolean
+  published?: boolean
   skills?: boolean | Prisma.SkillCategory$skillsArgs<ExtArgs>
   _count?: boolean | Prisma.SkillCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["skillCategory"]>
@@ -414,21 +445,24 @@ export type SkillCategorySelectCreateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   name?: boolean
   order?: boolean
+  published?: boolean
 }, ExtArgs["result"]["skillCategory"]>
 
 export type SkillCategorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   order?: boolean
+  published?: boolean
 }, ExtArgs["result"]["skillCategory"]>
 
 export type SkillCategorySelectScalar = {
   id?: boolean
   name?: boolean
   order?: boolean
+  published?: boolean
 }
 
-export type SkillCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "order", ExtArgs["result"]["skillCategory"]>
+export type SkillCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "order" | "published", ExtArgs["result"]["skillCategory"]>
 export type SkillCategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   skills?: boolean | Prisma.SkillCategory$skillsArgs<ExtArgs>
   _count?: boolean | Prisma.SkillCategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -445,6 +479,7 @@ export type $SkillCategoryPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     name: string
     order: number
+    published: boolean
   }, ExtArgs["result"]["skillCategory"]>
   composites: {}
 }
@@ -872,6 +907,7 @@ export interface SkillCategoryFieldRefs {
   readonly id: Prisma.FieldRef<"SkillCategory", 'String'>
   readonly name: Prisma.FieldRef<"SkillCategory", 'String'>
   readonly order: Prisma.FieldRef<"SkillCategory", 'Int'>
+  readonly published: Prisma.FieldRef<"SkillCategory", 'Boolean'>
 }
     
 

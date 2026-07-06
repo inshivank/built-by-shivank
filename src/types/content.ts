@@ -111,6 +111,30 @@ export interface SkillCategory {
   skills: string[];
 }
 
+/** Database-driven skill entry (used by admin and public portfolio) */
+export interface SkillEntry {
+  id: string;
+  name: string;
+  icon?: string;
+  proficiency: number;
+  yearsExp?: number;
+  featured: boolean;
+  published: boolean;
+  order: number;
+  categoryId: string;
+  categoryName: string;
+}
+
+/** Database-driven skill category (groups SkillEntry records) */
+export interface SkillCategoryEntry {
+  id: string;
+  name: string;
+  order: number;
+  published: boolean;
+  skills: SkillEntry[];
+}
+
+
 export interface ContactContent {
   tagline: string;
   description: string;
