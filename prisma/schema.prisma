@@ -138,16 +138,24 @@ model Experience {
 // ─────────────────────────────────────────────
 
 model Education {
-  id              String   @id @default("singleton")
-  institution     String
-  degree          String
-  location        String
-  period          String
-  progressYear    String
-  progressPct     Int      @default(0)
-  gpa             String?
-  coursework      String   // JSON array
-  updatedAt       DateTime @updatedAt
+  id           String   @id @default(cuid())
+  institution  String
+  logoUrl      String?
+  degree       String
+  field        String?
+  location     String
+  startDate    String
+  endDate      String?
+  isCurrent    Boolean  @default(false)
+  gpa          String?
+  description  String?
+  progressYear String?
+  progressPct  Int?
+  coursework   String   @default("[]") // JSON array
+  order        Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────

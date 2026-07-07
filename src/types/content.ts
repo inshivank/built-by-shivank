@@ -183,3 +183,24 @@ export interface Education {
   };
   coursework: string[];
 }
+
+/** Database-driven education entry (used by admin and public portfolio) */
+export interface EducationEntry {
+  id: string;
+  institution: string;
+  logoUrl?: string;
+  degree: string;
+  field?: string;
+  location: string;
+  startDate: string;
+  endDate?: string;
+  isCurrent: boolean;
+  gpa?: string;
+  description?: string;
+  progressYear?: string;
+  progressPct?: number;
+  coursework: string[];
+  order: number;
+  published: boolean;
+}
+

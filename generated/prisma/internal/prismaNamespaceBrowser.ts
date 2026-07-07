@@ -212,13 +212,21 @@ export type ExperienceScalarFieldEnum = (typeof ExperienceScalarFieldEnum)[keyof
 export const EducationScalarFieldEnum = {
   id: 'id',
   institution: 'institution',
+  logoUrl: 'logoUrl',
   degree: 'degree',
+  field: 'field',
   location: 'location',
-  period: 'period',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  isCurrent: 'isCurrent',
+  gpa: 'gpa',
+  description: 'description',
   progressYear: 'progressYear',
   progressPct: 'progressPct',
-  gpa: 'gpa',
   coursework: 'coursework',
+  order: 'order',
+  published: 'published',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 

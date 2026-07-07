@@ -28,48 +28,74 @@ export type AggregateEducation = {
 
 export type EducationAvgAggregateOutputType = {
   progressPct: number | null
+  order: number | null
 }
 
 export type EducationSumAggregateOutputType = {
   progressPct: number | null
+  order: number | null
 }
 
 export type EducationMinAggregateOutputType = {
   id: string | null
   institution: string | null
+  logoUrl: string | null
   degree: string | null
+  field: string | null
   location: string | null
-  period: string | null
+  startDate: string | null
+  endDate: string | null
+  isCurrent: boolean | null
+  gpa: string | null
+  description: string | null
   progressYear: string | null
   progressPct: number | null
-  gpa: string | null
   coursework: string | null
+  order: number | null
+  published: boolean | null
+  createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type EducationMaxAggregateOutputType = {
   id: string | null
   institution: string | null
+  logoUrl: string | null
   degree: string | null
+  field: string | null
   location: string | null
-  period: string | null
+  startDate: string | null
+  endDate: string | null
+  isCurrent: boolean | null
+  gpa: string | null
+  description: string | null
   progressYear: string | null
   progressPct: number | null
-  gpa: string | null
   coursework: string | null
+  order: number | null
+  published: boolean | null
+  createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type EducationCountAggregateOutputType = {
   id: number
   institution: number
+  logoUrl: number
   degree: number
+  field: number
   location: number
-  period: number
+  startDate: number
+  endDate: number
+  isCurrent: number
+  gpa: number
+  description: number
   progressYear: number
   progressPct: number
-  gpa: number
   coursework: number
+  order: number
+  published: number
+  createdAt: number
   updatedAt: number
   _all: number
 }
@@ -77,48 +103,74 @@ export type EducationCountAggregateOutputType = {
 
 export type EducationAvgAggregateInputType = {
   progressPct?: true
+  order?: true
 }
 
 export type EducationSumAggregateInputType = {
   progressPct?: true
+  order?: true
 }
 
 export type EducationMinAggregateInputType = {
   id?: true
   institution?: true
+  logoUrl?: true
   degree?: true
+  field?: true
   location?: true
-  period?: true
+  startDate?: true
+  endDate?: true
+  isCurrent?: true
+  gpa?: true
+  description?: true
   progressYear?: true
   progressPct?: true
-  gpa?: true
   coursework?: true
+  order?: true
+  published?: true
+  createdAt?: true
   updatedAt?: true
 }
 
 export type EducationMaxAggregateInputType = {
   id?: true
   institution?: true
+  logoUrl?: true
   degree?: true
+  field?: true
   location?: true
-  period?: true
+  startDate?: true
+  endDate?: true
+  isCurrent?: true
+  gpa?: true
+  description?: true
   progressYear?: true
   progressPct?: true
-  gpa?: true
   coursework?: true
+  order?: true
+  published?: true
+  createdAt?: true
   updatedAt?: true
 }
 
 export type EducationCountAggregateInputType = {
   id?: true
   institution?: true
+  logoUrl?: true
   degree?: true
+  field?: true
   location?: true
-  period?: true
+  startDate?: true
+  endDate?: true
+  isCurrent?: true
+  gpa?: true
+  description?: true
   progressYear?: true
   progressPct?: true
-  gpa?: true
   coursework?: true
+  order?: true
+  published?: true
+  createdAt?: true
   updatedAt?: true
   _all?: true
 }
@@ -212,13 +264,21 @@ export type EducationGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type EducationGroupByOutputType = {
   id: string
   institution: string
+  logoUrl: string | null
   degree: string
+  field: string | null
   location: string
-  period: string
-  progressYear: string
-  progressPct: number
+  startDate: string
+  endDate: string | null
+  isCurrent: boolean
   gpa: string | null
+  description: string | null
+  progressYear: string | null
+  progressPct: number | null
   coursework: string
+  order: number
+  published: boolean
+  createdAt: Date
   updatedAt: Date
   _count: EducationCountAggregateOutputType | null
   _avg: EducationAvgAggregateOutputType | null
@@ -248,26 +308,42 @@ export type EducationWhereInput = {
   NOT?: Prisma.EducationWhereInput | Prisma.EducationWhereInput[]
   id?: Prisma.StringFilter<"Education"> | string
   institution?: Prisma.StringFilter<"Education"> | string
+  logoUrl?: Prisma.StringNullableFilter<"Education"> | string | null
   degree?: Prisma.StringFilter<"Education"> | string
+  field?: Prisma.StringNullableFilter<"Education"> | string | null
   location?: Prisma.StringFilter<"Education"> | string
-  period?: Prisma.StringFilter<"Education"> | string
-  progressYear?: Prisma.StringFilter<"Education"> | string
-  progressPct?: Prisma.IntFilter<"Education"> | number
+  startDate?: Prisma.StringFilter<"Education"> | string
+  endDate?: Prisma.StringNullableFilter<"Education"> | string | null
+  isCurrent?: Prisma.BoolFilter<"Education"> | boolean
   gpa?: Prisma.StringNullableFilter<"Education"> | string | null
+  description?: Prisma.StringNullableFilter<"Education"> | string | null
+  progressYear?: Prisma.StringNullableFilter<"Education"> | string | null
+  progressPct?: Prisma.IntNullableFilter<"Education"> | number | null
   coursework?: Prisma.StringFilter<"Education"> | string
+  order?: Prisma.IntFilter<"Education"> | number
+  published?: Prisma.BoolFilter<"Education"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Education"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Education"> | Date | string
 }
 
 export type EducationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   institution?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   degree?: Prisma.SortOrder
+  field?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
-  period?: Prisma.SortOrder
-  progressYear?: Prisma.SortOrder
-  progressPct?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  isCurrent?: Prisma.SortOrder
   gpa?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  progressYear?: Prisma.SortOrderInput | Prisma.SortOrder
+  progressPct?: Prisma.SortOrderInput | Prisma.SortOrder
   coursework?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
@@ -277,26 +353,42 @@ export type EducationWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.EducationWhereInput[]
   NOT?: Prisma.EducationWhereInput | Prisma.EducationWhereInput[]
   institution?: Prisma.StringFilter<"Education"> | string
+  logoUrl?: Prisma.StringNullableFilter<"Education"> | string | null
   degree?: Prisma.StringFilter<"Education"> | string
+  field?: Prisma.StringNullableFilter<"Education"> | string | null
   location?: Prisma.StringFilter<"Education"> | string
-  period?: Prisma.StringFilter<"Education"> | string
-  progressYear?: Prisma.StringFilter<"Education"> | string
-  progressPct?: Prisma.IntFilter<"Education"> | number
+  startDate?: Prisma.StringFilter<"Education"> | string
+  endDate?: Prisma.StringNullableFilter<"Education"> | string | null
+  isCurrent?: Prisma.BoolFilter<"Education"> | boolean
   gpa?: Prisma.StringNullableFilter<"Education"> | string | null
+  description?: Prisma.StringNullableFilter<"Education"> | string | null
+  progressYear?: Prisma.StringNullableFilter<"Education"> | string | null
+  progressPct?: Prisma.IntNullableFilter<"Education"> | number | null
   coursework?: Prisma.StringFilter<"Education"> | string
+  order?: Prisma.IntFilter<"Education"> | number
+  published?: Prisma.BoolFilter<"Education"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"Education"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Education"> | Date | string
 }, "id">
 
 export type EducationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   institution?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   degree?: Prisma.SortOrder
+  field?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
-  period?: Prisma.SortOrder
-  progressYear?: Prisma.SortOrder
-  progressPct?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  isCurrent?: Prisma.SortOrder
   gpa?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  progressYear?: Prisma.SortOrderInput | Prisma.SortOrder
+  progressPct?: Prisma.SortOrderInput | Prisma.SortOrder
   coursework?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.EducationCountOrderByAggregateInput
   _avg?: Prisma.EducationAvgOrderByAggregateInput
@@ -311,152 +403,250 @@ export type EducationScalarWhereWithAggregatesInput = {
   NOT?: Prisma.EducationScalarWhereWithAggregatesInput | Prisma.EducationScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Education"> | string
   institution?: Prisma.StringWithAggregatesFilter<"Education"> | string
+  logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
   degree?: Prisma.StringWithAggregatesFilter<"Education"> | string
+  field?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
   location?: Prisma.StringWithAggregatesFilter<"Education"> | string
-  period?: Prisma.StringWithAggregatesFilter<"Education"> | string
-  progressYear?: Prisma.StringWithAggregatesFilter<"Education"> | string
-  progressPct?: Prisma.IntWithAggregatesFilter<"Education"> | number
+  startDate?: Prisma.StringWithAggregatesFilter<"Education"> | string
+  endDate?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
+  isCurrent?: Prisma.BoolWithAggregatesFilter<"Education"> | boolean
   gpa?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
+  progressYear?: Prisma.StringNullableWithAggregatesFilter<"Education"> | string | null
+  progressPct?: Prisma.IntNullableWithAggregatesFilter<"Education"> | number | null
   coursework?: Prisma.StringWithAggregatesFilter<"Education"> | string
+  order?: Prisma.IntWithAggregatesFilter<"Education"> | number
+  published?: Prisma.BoolWithAggregatesFilter<"Education"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Education"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Education"> | Date | string
 }
 
 export type EducationCreateInput = {
   id?: string
   institution: string
+  logoUrl?: string | null
   degree: string
+  field?: string | null
   location: string
-  period: string
-  progressYear: string
-  progressPct?: number
+  startDate: string
+  endDate?: string | null
+  isCurrent?: boolean
   gpa?: string | null
-  coursework: string
+  description?: string | null
+  progressYear?: string | null
+  progressPct?: number | null
+  coursework?: string
+  order?: number
+  published?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type EducationUncheckedCreateInput = {
   id?: string
   institution: string
+  logoUrl?: string | null
   degree: string
+  field?: string | null
   location: string
-  period: string
-  progressYear: string
-  progressPct?: number
+  startDate: string
+  endDate?: string | null
+  isCurrent?: boolean
   gpa?: string | null
-  coursework: string
+  description?: string | null
+  progressYear?: string | null
+  progressPct?: number | null
+  coursework?: string
+  order?: number
+  published?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type EducationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   institution?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   degree?: Prisma.StringFieldUpdateOperationsInput | string
+  field?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
-  period?: Prisma.StringFieldUpdateOperationsInput | string
-  progressYear?: Prisma.StringFieldUpdateOperationsInput | string
-  progressPct?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.StringFieldUpdateOperationsInput | string
+  endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gpa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressYear?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressPct?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coursework?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EducationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   institution?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   degree?: Prisma.StringFieldUpdateOperationsInput | string
+  field?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
-  period?: Prisma.StringFieldUpdateOperationsInput | string
-  progressYear?: Prisma.StringFieldUpdateOperationsInput | string
-  progressPct?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.StringFieldUpdateOperationsInput | string
+  endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gpa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressYear?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressPct?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coursework?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EducationCreateManyInput = {
   id?: string
   institution: string
+  logoUrl?: string | null
   degree: string
+  field?: string | null
   location: string
-  period: string
-  progressYear: string
-  progressPct?: number
+  startDate: string
+  endDate?: string | null
+  isCurrent?: boolean
   gpa?: string | null
-  coursework: string
+  description?: string | null
+  progressYear?: string | null
+  progressPct?: number | null
+  coursework?: string
+  order?: number
+  published?: boolean
+  createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type EducationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   institution?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   degree?: Prisma.StringFieldUpdateOperationsInput | string
+  field?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
-  period?: Prisma.StringFieldUpdateOperationsInput | string
-  progressYear?: Prisma.StringFieldUpdateOperationsInput | string
-  progressPct?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.StringFieldUpdateOperationsInput | string
+  endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gpa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressYear?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressPct?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coursework?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EducationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   institution?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   degree?: Prisma.StringFieldUpdateOperationsInput | string
+  field?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
-  period?: Prisma.StringFieldUpdateOperationsInput | string
-  progressYear?: Prisma.StringFieldUpdateOperationsInput | string
-  progressPct?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.StringFieldUpdateOperationsInput | string
+  endDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isCurrent?: Prisma.BoolFieldUpdateOperationsInput | boolean
   gpa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressYear?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  progressPct?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   coursework?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type EducationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   institution?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
   degree?: Prisma.SortOrder
+  field?: Prisma.SortOrder
   location?: Prisma.SortOrder
-  period?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
+  isCurrent?: Prisma.SortOrder
+  gpa?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   progressYear?: Prisma.SortOrder
   progressPct?: Prisma.SortOrder
-  gpa?: Prisma.SortOrder
   coursework?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type EducationAvgOrderByAggregateInput = {
   progressPct?: Prisma.SortOrder
+  order?: Prisma.SortOrder
 }
 
 export type EducationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   institution?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
   degree?: Prisma.SortOrder
+  field?: Prisma.SortOrder
   location?: Prisma.SortOrder
-  period?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
+  isCurrent?: Prisma.SortOrder
+  gpa?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   progressYear?: Prisma.SortOrder
   progressPct?: Prisma.SortOrder
-  gpa?: Prisma.SortOrder
   coursework?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type EducationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   institution?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
   degree?: Prisma.SortOrder
+  field?: Prisma.SortOrder
   location?: Prisma.SortOrder
-  period?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
+  isCurrent?: Prisma.SortOrder
+  gpa?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   progressYear?: Prisma.SortOrder
   progressPct?: Prisma.SortOrder
-  gpa?: Prisma.SortOrder
   coursework?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type EducationSumOrderByAggregateInput = {
   progressPct?: Prisma.SortOrder
+  order?: Prisma.SortOrder
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 
@@ -464,56 +654,88 @@ export type EducationSumOrderByAggregateInput = {
 export type EducationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   institution?: boolean
+  logoUrl?: boolean
   degree?: boolean
+  field?: boolean
   location?: boolean
-  period?: boolean
+  startDate?: boolean
+  endDate?: boolean
+  isCurrent?: boolean
+  gpa?: boolean
+  description?: boolean
   progressYear?: boolean
   progressPct?: boolean
-  gpa?: boolean
   coursework?: boolean
+  order?: boolean
+  published?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   institution?: boolean
+  logoUrl?: boolean
   degree?: boolean
+  field?: boolean
   location?: boolean
-  period?: boolean
+  startDate?: boolean
+  endDate?: boolean
+  isCurrent?: boolean
+  gpa?: boolean
+  description?: boolean
   progressYear?: boolean
   progressPct?: boolean
-  gpa?: boolean
   coursework?: boolean
+  order?: boolean
+  published?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   institution?: boolean
+  logoUrl?: boolean
   degree?: boolean
+  field?: boolean
   location?: boolean
-  period?: boolean
+  startDate?: boolean
+  endDate?: boolean
+  isCurrent?: boolean
+  gpa?: boolean
+  description?: boolean
   progressYear?: boolean
   progressPct?: boolean
-  gpa?: boolean
   coursework?: boolean
+  order?: boolean
+  published?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["education"]>
 
 export type EducationSelectScalar = {
   id?: boolean
   institution?: boolean
+  logoUrl?: boolean
   degree?: boolean
+  field?: boolean
   location?: boolean
-  period?: boolean
+  startDate?: boolean
+  endDate?: boolean
+  isCurrent?: boolean
+  gpa?: boolean
+  description?: boolean
   progressYear?: boolean
   progressPct?: boolean
-  gpa?: boolean
   coursework?: boolean
+  order?: boolean
+  published?: boolean
+  createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "institution" | "degree" | "location" | "period" | "progressYear" | "progressPct" | "gpa" | "coursework" | "updatedAt", ExtArgs["result"]["education"]>
+export type EducationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "institution" | "logoUrl" | "degree" | "field" | "location" | "startDate" | "endDate" | "isCurrent" | "gpa" | "description" | "progressYear" | "progressPct" | "coursework" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
 
 export type $EducationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Education"
@@ -521,13 +743,21 @@ export type $EducationPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     institution: string
+    logoUrl: string | null
     degree: string
+    field: string | null
     location: string
-    period: string
-    progressYear: string
-    progressPct: number
+    startDate: string
+    endDate: string | null
+    isCurrent: boolean
     gpa: string | null
+    description: string | null
+    progressYear: string | null
+    progressPct: number | null
     coursework: string
+    order: number
+    published: boolean
+    createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["education"]>
   composites: {}
@@ -954,13 +1184,21 @@ export interface Prisma__EducationClient<T, Null = never, ExtArgs extends runtim
 export interface EducationFieldRefs {
   readonly id: Prisma.FieldRef<"Education", 'String'>
   readonly institution: Prisma.FieldRef<"Education", 'String'>
+  readonly logoUrl: Prisma.FieldRef<"Education", 'String'>
   readonly degree: Prisma.FieldRef<"Education", 'String'>
+  readonly field: Prisma.FieldRef<"Education", 'String'>
   readonly location: Prisma.FieldRef<"Education", 'String'>
-  readonly period: Prisma.FieldRef<"Education", 'String'>
+  readonly startDate: Prisma.FieldRef<"Education", 'String'>
+  readonly endDate: Prisma.FieldRef<"Education", 'String'>
+  readonly isCurrent: Prisma.FieldRef<"Education", 'Boolean'>
+  readonly gpa: Prisma.FieldRef<"Education", 'String'>
+  readonly description: Prisma.FieldRef<"Education", 'String'>
   readonly progressYear: Prisma.FieldRef<"Education", 'String'>
   readonly progressPct: Prisma.FieldRef<"Education", 'Int'>
-  readonly gpa: Prisma.FieldRef<"Education", 'String'>
   readonly coursework: Prisma.FieldRef<"Education", 'String'>
+  readonly order: Prisma.FieldRef<"Education", 'Int'>
+  readonly published: Prisma.FieldRef<"Education", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"Education", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Education", 'DateTime'>
 }
     
