@@ -14,20 +14,26 @@ import {
 import { StatCard } from "@/components/admin/stat-card";
 import { getAllProjectsAdmin } from "@/actions/projects";
 import { getAllExperiencesAdmin } from "@/actions/experience";
+import { getAllCertificationsAdmin } from "@/actions/certifications";
 import { skills } from "@/content/skills";
-import { certifications } from "@/content/certifications";
 import { Project } from "@/types/content";
 
 export default function DashboardHomePage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [experienceCount, setExperienceCount] = useState<number>(0);
+  const [certificationCount, setCertificationCount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([getAllProjectsAdmin(), getAllExperiencesAdmin()])
-      .then(([projs, exps]) => {
+    Promise.all([
+      getAllProjectsAdmin(),
+      getAllExperiencesAdmin(),
+      getAllCertificationsAdmin(),
+    ])
+      .then(([projs, exps, certs]) => {
         setProjects(projs);
         setExperienceCount(exps.length);
+        setCertificationCount(certs.length);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -90,7 +96,7 @@ export default function DashboardHomePage() {
     },
     {
       title: "Certifications",
-      value: certifications.length,
+      value: loading ? "-" : certificationCount,
       icon: BookOpen,
       trend: "Professional certifications",
       accentColor: "#10B981",

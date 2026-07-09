@@ -93,11 +93,19 @@ export interface Leadership {
 }
 
 export interface Certification {
+  id?: string;
   title: string;
   issuer: string;
   date: string;
+  credentialId?: string;
+  expiryDate?: string;
   credentialUrl: string;
   logoUrl?: string; // fallback if needed
+  imageUrl?: string;
+  skills?: string[];
+  description?: string;
+  order?: number;
+  published?: boolean;
 }
 
 export interface Achievement {
@@ -203,4 +211,3 @@ export interface EducationEntry {
   order: number;
   published: boolean;
 }
-

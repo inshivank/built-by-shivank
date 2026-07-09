@@ -38,11 +38,16 @@ export type CertificationMinAggregateOutputType = {
   id: string | null
   title: string | null
   issuer: string | null
+  credentialId: string | null
   date: string | null
+  expiryDate: string | null
   credentialUrl: string | null
   logoUrl: string | null
   imageUrl: string | null
+  skills: string | null
+  description: string | null
   order: number | null
+  published: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -51,11 +56,16 @@ export type CertificationMaxAggregateOutputType = {
   id: string | null
   title: string | null
   issuer: string | null
+  credentialId: string | null
   date: string | null
+  expiryDate: string | null
   credentialUrl: string | null
   logoUrl: string | null
   imageUrl: string | null
+  skills: string | null
+  description: string | null
   order: number | null
+  published: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,11 +74,16 @@ export type CertificationCountAggregateOutputType = {
   id: number
   title: number
   issuer: number
+  credentialId: number
   date: number
+  expiryDate: number
   credentialUrl: number
   logoUrl: number
   imageUrl: number
+  skills: number
+  description: number
   order: number
+  published: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -87,11 +102,16 @@ export type CertificationMinAggregateInputType = {
   id?: true
   title?: true
   issuer?: true
+  credentialId?: true
   date?: true
+  expiryDate?: true
   credentialUrl?: true
   logoUrl?: true
   imageUrl?: true
+  skills?: true
+  description?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -100,11 +120,16 @@ export type CertificationMaxAggregateInputType = {
   id?: true
   title?: true
   issuer?: true
+  credentialId?: true
   date?: true
+  expiryDate?: true
   credentialUrl?: true
   logoUrl?: true
   imageUrl?: true
+  skills?: true
+  description?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -113,11 +138,16 @@ export type CertificationCountAggregateInputType = {
   id?: true
   title?: true
   issuer?: true
+  credentialId?: true
   date?: true
+  expiryDate?: true
   credentialUrl?: true
   logoUrl?: true
   imageUrl?: true
+  skills?: true
+  description?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -213,11 +243,16 @@ export type CertificationGroupByOutputType = {
   id: string
   title: string
   issuer: string
+  credentialId: string | null
   date: string
+  expiryDate: string | null
   credentialUrl: string
   logoUrl: string | null
   imageUrl: string | null
+  skills: string
+  description: string | null
   order: number
+  published: boolean
   createdAt: Date
   updatedAt: Date
   _count: CertificationCountAggregateOutputType | null
@@ -249,11 +284,16 @@ export type CertificationWhereInput = {
   id?: Prisma.StringFilter<"Certification"> | string
   title?: Prisma.StringFilter<"Certification"> | string
   issuer?: Prisma.StringFilter<"Certification"> | string
+  credentialId?: Prisma.StringNullableFilter<"Certification"> | string | null
   date?: Prisma.StringFilter<"Certification"> | string
+  expiryDate?: Prisma.StringNullableFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringFilter<"Certification"> | string
   logoUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
+  skills?: Prisma.StringFilter<"Certification"> | string
+  description?: Prisma.StringNullableFilter<"Certification"> | string | null
   order?: Prisma.IntFilter<"Certification"> | number
+  published?: Prisma.BoolFilter<"Certification"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Certification"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Certification"> | Date | string
 }
@@ -262,11 +302,16 @@ export type CertificationOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   issuer?: Prisma.SortOrder
+  credentialId?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  expiryDate?: Prisma.SortOrderInput | Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -278,11 +323,16 @@ export type CertificationWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CertificationWhereInput | Prisma.CertificationWhereInput[]
   title?: Prisma.StringFilter<"Certification"> | string
   issuer?: Prisma.StringFilter<"Certification"> | string
+  credentialId?: Prisma.StringNullableFilter<"Certification"> | string | null
   date?: Prisma.StringFilter<"Certification"> | string
+  expiryDate?: Prisma.StringNullableFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringFilter<"Certification"> | string
   logoUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Certification"> | string | null
+  skills?: Prisma.StringFilter<"Certification"> | string
+  description?: Prisma.StringNullableFilter<"Certification"> | string | null
   order?: Prisma.IntFilter<"Certification"> | number
+  published?: Prisma.BoolFilter<"Certification"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Certification"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Certification"> | Date | string
 }, "id">
@@ -291,11 +341,16 @@ export type CertificationOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   issuer?: Prisma.SortOrder
+  credentialId?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrder
+  expiryDate?: Prisma.SortOrderInput | Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CertificationCountOrderByAggregateInput
@@ -312,11 +367,16 @@ export type CertificationScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Certification"> | string
   title?: Prisma.StringWithAggregatesFilter<"Certification"> | string
   issuer?: Prisma.StringWithAggregatesFilter<"Certification"> | string
+  credentialId?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   date?: Prisma.StringWithAggregatesFilter<"Certification"> | string
+  expiryDate?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   credentialUrl?: Prisma.StringWithAggregatesFilter<"Certification"> | string
   logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
+  skills?: Prisma.StringWithAggregatesFilter<"Certification"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Certification"> | string | null
   order?: Prisma.IntWithAggregatesFilter<"Certification"> | number
+  published?: Prisma.BoolWithAggregatesFilter<"Certification"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Certification"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Certification"> | Date | string
 }
@@ -325,11 +385,16 @@ export type CertificationCreateInput = {
   id?: string
   title: string
   issuer: string
+  credentialId?: string | null
   date: string
+  expiryDate?: string | null
   credentialUrl: string
   logoUrl?: string | null
   imageUrl?: string | null
+  skills?: string
+  description?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -338,11 +403,16 @@ export type CertificationUncheckedCreateInput = {
   id?: string
   title: string
   issuer: string
+  credentialId?: string | null
   date: string
+  expiryDate?: string | null
   credentialUrl: string
   logoUrl?: string | null
   imageUrl?: string | null
+  skills?: string
+  description?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -351,11 +421,16 @@ export type CertificationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   issuer?: Prisma.StringFieldUpdateOperationsInput | string
+  credentialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  expiryDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.StringFieldUpdateOperationsInput | string
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -364,11 +439,16 @@ export type CertificationUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   issuer?: Prisma.StringFieldUpdateOperationsInput | string
+  credentialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  expiryDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.StringFieldUpdateOperationsInput | string
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -377,11 +457,16 @@ export type CertificationCreateManyInput = {
   id?: string
   title: string
   issuer: string
+  credentialId?: string | null
   date: string
+  expiryDate?: string | null
   credentialUrl: string
   logoUrl?: string | null
   imageUrl?: string | null
+  skills?: string
+  description?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -390,11 +475,16 @@ export type CertificationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   issuer?: Prisma.StringFieldUpdateOperationsInput | string
+  credentialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  expiryDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.StringFieldUpdateOperationsInput | string
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -403,11 +493,16 @@ export type CertificationUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   issuer?: Prisma.StringFieldUpdateOperationsInput | string
+  credentialId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.StringFieldUpdateOperationsInput | string
+  expiryDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   credentialUrl?: Prisma.StringFieldUpdateOperationsInput | string
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  skills?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -416,11 +511,16 @@ export type CertificationCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   issuer?: Prisma.SortOrder
+  credentialId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  expiryDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -433,11 +533,16 @@ export type CertificationMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   issuer?: Prisma.SortOrder
+  credentialId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  expiryDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -446,11 +551,16 @@ export type CertificationMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   issuer?: Prisma.SortOrder
+  credentialId?: Prisma.SortOrder
   date?: Prisma.SortOrder
+  expiryDate?: Prisma.SortOrder
   credentialUrl?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -465,11 +575,16 @@ export type CertificationSelect<ExtArgs extends runtime.Types.Extensions.Interna
   id?: boolean
   title?: boolean
   issuer?: boolean
+  credentialId?: boolean
   date?: boolean
+  expiryDate?: boolean
   credentialUrl?: boolean
   logoUrl?: boolean
   imageUrl?: boolean
+  skills?: boolean
+  description?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["certification"]>
@@ -478,11 +593,16 @@ export type CertificationSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   title?: boolean
   issuer?: boolean
+  credentialId?: boolean
   date?: boolean
+  expiryDate?: boolean
   credentialUrl?: boolean
   logoUrl?: boolean
   imageUrl?: boolean
+  skills?: boolean
+  description?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["certification"]>
@@ -491,11 +611,16 @@ export type CertificationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   title?: boolean
   issuer?: boolean
+  credentialId?: boolean
   date?: boolean
+  expiryDate?: boolean
   credentialUrl?: boolean
   logoUrl?: boolean
   imageUrl?: boolean
+  skills?: boolean
+  description?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["certification"]>
@@ -504,16 +629,21 @@ export type CertificationSelectScalar = {
   id?: boolean
   title?: boolean
   issuer?: boolean
+  credentialId?: boolean
   date?: boolean
+  expiryDate?: boolean
   credentialUrl?: boolean
   logoUrl?: boolean
   imageUrl?: boolean
+  skills?: boolean
+  description?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CertificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "issuer" | "date" | "credentialUrl" | "logoUrl" | "imageUrl" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["certification"]>
+export type CertificationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "issuer" | "credentialId" | "date" | "expiryDate" | "credentialUrl" | "logoUrl" | "imageUrl" | "skills" | "description" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["certification"]>
 
 export type $CertificationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Certification"
@@ -522,11 +652,16 @@ export type $CertificationPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     title: string
     issuer: string
+    credentialId: string | null
     date: string
+    expiryDate: string | null
     credentialUrl: string
     logoUrl: string | null
     imageUrl: string | null
+    skills: string
+    description: string | null
     order: number
+    published: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["certification"]>
@@ -955,11 +1090,16 @@ export interface CertificationFieldRefs {
   readonly id: Prisma.FieldRef<"Certification", 'String'>
   readonly title: Prisma.FieldRef<"Certification", 'String'>
   readonly issuer: Prisma.FieldRef<"Certification", 'String'>
+  readonly credentialId: Prisma.FieldRef<"Certification", 'String'>
   readonly date: Prisma.FieldRef<"Certification", 'String'>
+  readonly expiryDate: Prisma.FieldRef<"Certification", 'String'>
   readonly credentialUrl: Prisma.FieldRef<"Certification", 'String'>
   readonly logoUrl: Prisma.FieldRef<"Certification", 'String'>
   readonly imageUrl: Prisma.FieldRef<"Certification", 'String'>
+  readonly skills: Prisma.FieldRef<"Certification", 'String'>
+  readonly description: Prisma.FieldRef<"Certification", 'String'>
   readonly order: Prisma.FieldRef<"Certification", 'Int'>
+  readonly published: Prisma.FieldRef<"Certification", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Certification", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Certification", 'DateTime'>
 }

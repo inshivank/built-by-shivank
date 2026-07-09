@@ -251,11 +251,16 @@ export const CertificationScalarFieldEnum = {
   id: 'id',
   title: 'title',
   issuer: 'issuer',
+  credentialId: 'credentialId',
   date: 'date',
+  expiryDate: 'expiryDate',
   credentialUrl: 'credentialUrl',
   logoUrl: 'logoUrl',
   imageUrl: 'imageUrl',
+  skills: 'skills',
+  description: 'description',
   order: 'order',
+  published: 'published',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
