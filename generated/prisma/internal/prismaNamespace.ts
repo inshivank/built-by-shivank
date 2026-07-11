@@ -1904,7 +1904,13 @@ export const AchievementScalarFieldEnum = {
   title: 'title',
   metric: 'metric',
   description: 'description',
+  achievementType: 'achievementType',
+  organization: 'organization',
+  date: 'date',
+  imageUrl: 'imageUrl',
+  externalLink: 'externalLink',
   order: 'order',
+  published: 'published',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -200,13 +200,19 @@ model Certification {
 // ─────────────────────────────────────────────
 
 model Achievement {
-  id          String   @id @default(cuid())
-  title       String
-  metric      String
-  description String
-  order       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String   @id @default(cuid())
+  title           String
+  metric          String?
+  description     String
+  achievementType String   @default("Achievement")
+  organization    String?
+  date            String
+  imageUrl        String?
+  externalLink    String?
+  order           Int      @default(0)
+  published       Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 // ─────────────────────────────────────────────

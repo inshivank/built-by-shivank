@@ -109,9 +109,17 @@ export interface Certification {
 }
 
 export interface Achievement {
+  id?: string;
   title: string;
-  metric: string;
+  metric?: string;
   description: string;
+  achievementType?: string;
+  organization?: string;
+  date?: string;
+  imageUrl?: string;
+  externalLink?: string;
+  order?: number;
+  published?: boolean;
 }
 
 export interface SkillCategory {

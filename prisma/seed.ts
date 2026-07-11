@@ -367,7 +367,12 @@ async function main() {
       metric: "400+ Solved",
       description:
         "Solved 400+ coding interview problems using C++ & Python. Maintained top 12% rating in weekly contests.",
+      achievementType: "Contest",
+      organization: "LeetCode",
+      date: "2025",
+      externalLink: "https://leetcode.com/inshivank",
       order: 0,
+      published: true,
     },
     {
       id: "ach-1",
@@ -375,7 +380,12 @@ async function main() {
       metric: "Winner / 120 Teams",
       description:
         "Designed and engineered an automated AI health diagnosis moduler dashboard that swept the top hackathon honors.",
+      achievementType: "Hackathon",
+      organization: "Campus HackFest",
+      date: "2025",
+      externalLink: "https://github.com/inshivank",
       order: 1,
+      published: true,
     },
     {
       id: "ach-2",
@@ -383,7 +393,12 @@ async function main() {
       metric: "Rank 42 / 5,000+",
       description:
         "Ranked among top 50 student competitors nationally in competitive programming speed-runs.",
+      achievementType: "Competition",
+      organization: "National Coding League",
+      date: "2025",
+      externalLink: "https://leetcode.com/inshivank",
       order: 2,
+      published: true,
     },
   ];
 

@@ -15,6 +15,7 @@ import { StatCard } from "@/components/admin/stat-card";
 import { getAllProjectsAdmin } from "@/actions/projects";
 import { getAllExperiencesAdmin } from "@/actions/experience";
 import { getAllCertificationsAdmin } from "@/actions/certifications";
+import { getAllAchievementsAdmin } from "@/actions/achievements";
 import { skills } from "@/content/skills";
 import { Project } from "@/types/content";
 
@@ -22,6 +23,7 @@ export default function DashboardHomePage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [experienceCount, setExperienceCount] = useState<number>(0);
   const [certificationCount, setCertificationCount] = useState<number>(0);
+  const [achievementCount, setAchievementCount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,11 +31,13 @@ export default function DashboardHomePage() {
       getAllProjectsAdmin(),
       getAllExperiencesAdmin(),
       getAllCertificationsAdmin(),
+      getAllAchievementsAdmin(),
     ])
-      .then(([projs, exps, certs]) => {
+      .then(([projs, exps, certs, achs]) => {
         setProjects(projs);
         setExperienceCount(exps.length);
         setCertificationCount(certs.length);
+        setAchievementCount(achs.length);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -100,6 +104,13 @@ export default function DashboardHomePage() {
       icon: BookOpen,
       trend: "Professional certifications",
       accentColor: "#10B981",
+    },
+    {
+      title: "Achievements",
+      value: loading ? "-" : achievementCount,
+      icon: Star,
+      trend: "Portfolio achievements",
+      accentColor: "#F59E0B",
     },
   ];
 

@@ -39,7 +39,13 @@ export type AchievementMinAggregateOutputType = {
   title: string | null
   metric: string | null
   description: string | null
+  achievementType: string | null
+  organization: string | null
+  date: string | null
+  imageUrl: string | null
+  externalLink: string | null
   order: number | null
+  published: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -49,7 +55,13 @@ export type AchievementMaxAggregateOutputType = {
   title: string | null
   metric: string | null
   description: string | null
+  achievementType: string | null
+  organization: string | null
+  date: string | null
+  imageUrl: string | null
+  externalLink: string | null
   order: number | null
+  published: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,7 +71,13 @@ export type AchievementCountAggregateOutputType = {
   title: number
   metric: number
   description: number
+  achievementType: number
+  organization: number
+  date: number
+  imageUrl: number
+  externalLink: number
   order: number
+  published: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -79,7 +97,13 @@ export type AchievementMinAggregateInputType = {
   title?: true
   metric?: true
   description?: true
+  achievementType?: true
+  organization?: true
+  date?: true
+  imageUrl?: true
+  externalLink?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -89,7 +113,13 @@ export type AchievementMaxAggregateInputType = {
   title?: true
   metric?: true
   description?: true
+  achievementType?: true
+  organization?: true
+  date?: true
+  imageUrl?: true
+  externalLink?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,7 +129,13 @@ export type AchievementCountAggregateInputType = {
   title?: true
   metric?: true
   description?: true
+  achievementType?: true
+  organization?: true
+  date?: true
+  imageUrl?: true
+  externalLink?: true
   order?: true
+  published?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -194,9 +230,15 @@ export type AchievementGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type AchievementGroupByOutputType = {
   id: string
   title: string
-  metric: string
+  metric: string | null
   description: string
+  achievementType: string
+  organization: string | null
+  date: string
+  imageUrl: string | null
+  externalLink: string | null
   order: number
+  published: boolean
   createdAt: Date
   updatedAt: Date
   _count: AchievementCountAggregateOutputType | null
@@ -227,9 +269,15 @@ export type AchievementWhereInput = {
   NOT?: Prisma.AchievementWhereInput | Prisma.AchievementWhereInput[]
   id?: Prisma.StringFilter<"Achievement"> | string
   title?: Prisma.StringFilter<"Achievement"> | string
-  metric?: Prisma.StringFilter<"Achievement"> | string
+  metric?: Prisma.StringNullableFilter<"Achievement"> | string | null
   description?: Prisma.StringFilter<"Achievement"> | string
+  achievementType?: Prisma.StringFilter<"Achievement"> | string
+  organization?: Prisma.StringNullableFilter<"Achievement"> | string | null
+  date?: Prisma.StringFilter<"Achievement"> | string
+  imageUrl?: Prisma.StringNullableFilter<"Achievement"> | string | null
+  externalLink?: Prisma.StringNullableFilter<"Achievement"> | string | null
   order?: Prisma.IntFilter<"Achievement"> | number
+  published?: Prisma.BoolFilter<"Achievement"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
 }
@@ -237,9 +285,15 @@ export type AchievementWhereInput = {
 export type AchievementOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  metric?: Prisma.SortOrder
+  metric?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
+  achievementType?: Prisma.SortOrder
+  organization?: Prisma.SortOrderInput | Prisma.SortOrder
+  date?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  externalLink?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -250,9 +304,15 @@ export type AchievementWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AchievementWhereInput[]
   NOT?: Prisma.AchievementWhereInput | Prisma.AchievementWhereInput[]
   title?: Prisma.StringFilter<"Achievement"> | string
-  metric?: Prisma.StringFilter<"Achievement"> | string
+  metric?: Prisma.StringNullableFilter<"Achievement"> | string | null
   description?: Prisma.StringFilter<"Achievement"> | string
+  achievementType?: Prisma.StringFilter<"Achievement"> | string
+  organization?: Prisma.StringNullableFilter<"Achievement"> | string | null
+  date?: Prisma.StringFilter<"Achievement"> | string
+  imageUrl?: Prisma.StringNullableFilter<"Achievement"> | string | null
+  externalLink?: Prisma.StringNullableFilter<"Achievement"> | string | null
   order?: Prisma.IntFilter<"Achievement"> | number
+  published?: Prisma.BoolFilter<"Achievement"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Achievement"> | Date | string
 }, "id">
@@ -260,9 +320,15 @@ export type AchievementWhereUniqueInput = Prisma.AtLeast<{
 export type AchievementOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  metric?: Prisma.SortOrder
+  metric?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrder
+  achievementType?: Prisma.SortOrder
+  organization?: Prisma.SortOrderInput | Prisma.SortOrder
+  date?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  externalLink?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AchievementCountOrderByAggregateInput
@@ -278,9 +344,15 @@ export type AchievementScalarWhereWithAggregatesInput = {
   NOT?: Prisma.AchievementScalarWhereWithAggregatesInput | Prisma.AchievementScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
   title?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
-  metric?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
+  metric?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   description?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
+  achievementType?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
+  organization?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
+  date?: Prisma.StringWithAggregatesFilter<"Achievement"> | string
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
+  externalLink?: Prisma.StringNullableWithAggregatesFilter<"Achievement"> | string | null
   order?: Prisma.IntWithAggregatesFilter<"Achievement"> | number
+  published?: Prisma.BoolWithAggregatesFilter<"Achievement"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Achievement"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Achievement"> | Date | string
 }
@@ -288,9 +360,15 @@ export type AchievementScalarWhereWithAggregatesInput = {
 export type AchievementCreateInput = {
   id?: string
   title: string
-  metric: string
+  metric?: string | null
   description: string
+  achievementType?: string
+  organization?: string | null
+  date: string
+  imageUrl?: string | null
+  externalLink?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -298,9 +376,15 @@ export type AchievementCreateInput = {
 export type AchievementUncheckedCreateInput = {
   id?: string
   title: string
-  metric: string
+  metric?: string | null
   description: string
+  achievementType?: string
+  organization?: string | null
+  date: string
+  imageUrl?: string | null
+  externalLink?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -308,9 +392,15 @@ export type AchievementUncheckedCreateInput = {
 export type AchievementUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  metric?: Prisma.StringFieldUpdateOperationsInput | string
+  metric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  achievementType?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -318,9 +408,15 @@ export type AchievementUpdateInput = {
 export type AchievementUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  metric?: Prisma.StringFieldUpdateOperationsInput | string
+  metric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  achievementType?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -328,9 +424,15 @@ export type AchievementUncheckedUpdateInput = {
 export type AchievementCreateManyInput = {
   id?: string
   title: string
-  metric: string
+  metric?: string | null
   description: string
+  achievementType?: string
+  organization?: string | null
+  date: string
+  imageUrl?: string | null
+  externalLink?: string | null
   order?: number
+  published?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -338,9 +440,15 @@ export type AchievementCreateManyInput = {
 export type AchievementUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  metric?: Prisma.StringFieldUpdateOperationsInput | string
+  metric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  achievementType?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -348,9 +456,15 @@ export type AchievementUpdateManyMutationInput = {
 export type AchievementUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  metric?: Prisma.StringFieldUpdateOperationsInput | string
+  metric?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  achievementType?: Prisma.StringFieldUpdateOperationsInput | string
+  organization?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -360,7 +474,13 @@ export type AchievementCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   metric?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  achievementType?: Prisma.SortOrder
+  organization?: Prisma.SortOrder
+  date?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  externalLink?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -374,7 +494,13 @@ export type AchievementMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   metric?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  achievementType?: Prisma.SortOrder
+  organization?: Prisma.SortOrder
+  date?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  externalLink?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -384,7 +510,13 @@ export type AchievementMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   metric?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  achievementType?: Prisma.SortOrder
+  organization?: Prisma.SortOrder
+  date?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  externalLink?: Prisma.SortOrder
   order?: Prisma.SortOrder
+  published?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -400,7 +532,13 @@ export type AchievementSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   title?: boolean
   metric?: boolean
   description?: boolean
+  achievementType?: boolean
+  organization?: boolean
+  date?: boolean
+  imageUrl?: boolean
+  externalLink?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["achievement"]>
@@ -410,7 +548,13 @@ export type AchievementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   title?: boolean
   metric?: boolean
   description?: boolean
+  achievementType?: boolean
+  organization?: boolean
+  date?: boolean
+  imageUrl?: boolean
+  externalLink?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["achievement"]>
@@ -420,7 +564,13 @@ export type AchievementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   title?: boolean
   metric?: boolean
   description?: boolean
+  achievementType?: boolean
+  organization?: boolean
+  date?: boolean
+  imageUrl?: boolean
+  externalLink?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["achievement"]>
@@ -430,12 +580,18 @@ export type AchievementSelectScalar = {
   title?: boolean
   metric?: boolean
   description?: boolean
+  achievementType?: boolean
+  organization?: boolean
+  date?: boolean
+  imageUrl?: boolean
+  externalLink?: boolean
   order?: boolean
+  published?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "metric" | "description" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
+export type AchievementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "metric" | "description" | "achievementType" | "organization" | "date" | "imageUrl" | "externalLink" | "order" | "published" | "createdAt" | "updatedAt", ExtArgs["result"]["achievement"]>
 
 export type $AchievementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Achievement"
@@ -443,9 +599,15 @@ export type $AchievementPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
-    metric: string
+    metric: string | null
     description: string
+    achievementType: string
+    organization: string | null
+    date: string
+    imageUrl: string | null
+    externalLink: string | null
     order: number
+    published: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["achievement"]>
@@ -875,7 +1037,13 @@ export interface AchievementFieldRefs {
   readonly title: Prisma.FieldRef<"Achievement", 'String'>
   readonly metric: Prisma.FieldRef<"Achievement", 'String'>
   readonly description: Prisma.FieldRef<"Achievement", 'String'>
+  readonly achievementType: Prisma.FieldRef<"Achievement", 'String'>
+  readonly organization: Prisma.FieldRef<"Achievement", 'String'>
+  readonly date: Prisma.FieldRef<"Achievement", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"Achievement", 'String'>
+  readonly externalLink: Prisma.FieldRef<"Achievement", 'String'>
   readonly order: Prisma.FieldRef<"Achievement", 'Int'>
+  readonly published: Prisma.FieldRef<"Achievement", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Achievement", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Achievement", 'DateTime'>
 }
