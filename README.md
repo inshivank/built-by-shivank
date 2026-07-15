@@ -15,7 +15,6 @@ Live at [builtbyshivank.com](https://builtbyshivank.com).
 | **Icons** | Lucide React |
 | **Quality** | ESLint 9, Prettier 3 |
 
-## Getting started
 
 ```bash
 npm install
