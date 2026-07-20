@@ -1,4 +1,4 @@
-# Built by Shivank (in)
+# Built by Shivank
 
 Personal engineering portfolio for **Shivank Choudhary** — a B.Tech CSE student at JUIT building full-stack web apps, AI-powered tools, and software that solves real-world problems.
 
